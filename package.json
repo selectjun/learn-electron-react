@@ -41,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "electron": "^18.2.4"
   }
 }
