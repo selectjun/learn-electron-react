@@ -1,9 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useCallback } from "react";
+import { SEND_MAIN_PING } from "./constants";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
 
 function App() {
+  const { ipcRenderer } = window.require("electron");
+
+  const sendMail = useCallback(() => {
+    ipcRenderer.send(SEND_MAIN_PING, "send");
+  }, [ipcRenderer, SEND_MAIN_PING]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -50,6 +57,7 @@ function App() {
             React Redux
           </a>
         </span>
+        <button onClick={sendMail}>IPC</button>
       </header>
     </div>
   );
